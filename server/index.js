@@ -3,12 +3,15 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import routes from './routes.js';
+import dotenv from 'dotenv';
+import movieRoutes from './routes/movie.js';
+import authRoutes from './routes/auth.js';
+dotenv.config()
 const app = express();
 const port = process.env.PORT || 5000;
 const __dirname = new URL(import.meta.url).pathname;
 
-const dataBaseURI = 'mongodb+srv://root:toor@cluster0.nwktf.mongodb.net/movie-data?retryWrites=true&w=majority';
+const dataBaseURI = process.env.DB_URI 
 mongoose.connect(dataBaseURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -25,7 +28,8 @@ mongoose.connect(dataBaseURI, {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api', routes);
+app.use('/api/user', authRoutes);
+app.use('/api/movie', movieRoutes);
 
 if (process.env.NODE_ENV === 'production'){
   app.use(express.static(path.resolve(__dirname, '../../', 'build')));

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const {Schema} = mongoose;
+const { Schema, model } = mongoose;
 
 const movieschema = new Schema({
   name: String,
@@ -10,6 +10,6 @@ const movieschema = new Schema({
   '99popularity': String,
 });
 
-const Movie = mongoose.model('movies', movieschema);
+const MovieModel = model('movies', movieschema);
 
-export default Movie;
+export default MovieModel;
