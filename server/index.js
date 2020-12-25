@@ -4,6 +4,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authMiddleware from './middleware/authMiddleware.js';
 import movieRoutes from './routes/movie.js';
 import authRoutes from './routes/auth.js';
 dotenv.config()
@@ -28,6 +29,17 @@ mongoose.connect(dataBaseURI, {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const exceptPaths = (pathArr, middleware) => {
+  return (req, res, next) => {
+    if (pathArr.includes(req.path)) {
+      return next();
+    }
+    return middleware(req, res, next);
+  }
+}
+const excludedArr =['/api/user/token','/api/user/create', '/api/movie/list'];
+app.use(exceptPaths(excludedArr,authMiddleware));
 app.use('/api/user', authRoutes);
 app.use('/api/movie', movieRoutes);
 
