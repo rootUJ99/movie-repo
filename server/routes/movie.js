@@ -8,7 +8,7 @@ router.get('/list', async(req, res)=>{
     const movieDocs = await movieModel.find({
       name: {$regex: searchParam, $options: 'i'}
     });
-    res.send({...movieDocs})
+    res.send({movies: movieDocs})
   } catch(error){
     res.status(400).send({
       error
