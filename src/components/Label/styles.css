@@ -1,6 +1,6 @@
 .label {
   display: inline;
-  background-color: var(--background);
+  background-color: var(--secondry);
   border-radius: 5rem;
   padding: 0.3rem 0.7rem;
   max-width: 10rem;

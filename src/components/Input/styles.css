@@ -2,7 +2,7 @@
   padding: 0.7rem 1.2rem;
   border-radius: 0.7rem;
   border: none;
-  background-color: var(--accent);
-  color: black;
+  background-color: var(--field);
+  color: var(--font-color);
   outline: none;
 }

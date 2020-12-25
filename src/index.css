@@ -1,8 +1,11 @@
 :root {
-  --font-color: #FBFCFD;
-  --background: #1C2041;
-  --accent: #A5AECE;
-  --primary: #2772B7;
+  --font-color: #000000;
+  --background: #211D2F;
+  --accent: #6879A3;
+  --primary: #87ADB9;
+  --header: #322C44;
+  --secondry: #847BA9;
+  --field: #E5E5E5;
 }
 
 html {
@@ -20,6 +23,7 @@ body {
   margin: 0;
   font-family:'Roboto', 'Source Sans Pro', sans-serif;
   font-size: clamp(1rem, 1vw, 2rem); 
+  /* calc(10px + 2vmin); */
   margin: 0;
   background:var(--background);
   color: var(--font-color);
