@@ -21,7 +21,8 @@ html {
 
 body {
   margin: 0;
-  font-family:'Roboto', 'Source Sans Pro', sans-serif;
+  /* font-family:'Roboto', 'Source Sans Pro', sans-serif; */
+  font-family: 'Ropa Sans', sans-serif;
   font-size: clamp(1rem, 1vw, 2rem); 
   /* calc(10px + 2vmin); */
   margin: 0;
