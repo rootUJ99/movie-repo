@@ -49,7 +49,7 @@ const Login = ({authModal, setAuthModal}) => {
         <Input name="username" placeholder="username" value={authForm.username} onChange={handleChange}/>
         <Input name="password" placeholder="password" value={authForm.password} onChange={handleChange} type="password"/>
         <Button type="submit">{mode}</Button><br/>
-        --or--
+        <div className="or-divider">--or--</div>
         <Button onClick={()=> setMode(switchMode())}>{switchMode()}</Button>
         </div>
       </form>
