@@ -1,8 +1,9 @@
 import React from 'react'
 import './styles.css';
-const Input = ({name, onChange, value, placeholder}) => {
+const Input = ({name,type, onChange, value, placeholder}) => {
   return (
       <input 
+        type={type}
         name={name} 
         onChange={onChange} 
         value={value} 

@@ -1,8 +1,11 @@
+import {useState} from 'react';
 import Card from '../../components/Card';
 import Label from '../../components/Label';
+import Movie from '../Movie';
 import './styles.css';
 
 const Home = ({movieList}) => {
+  const [movieModal, setMovieModal] = useState();
   return (
     <div className="home">
       <div className="movie-grid">
@@ -18,6 +21,7 @@ const Home = ({movieList}) => {
           )
       }
       </div>
+      <Movie movieModal={movieModal} setMovieModal={setMovieModal}/>
     </div>
   );
 }

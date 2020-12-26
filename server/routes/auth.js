@@ -7,7 +7,9 @@ const router = express.Router();
 
 router.post('/create', async (req, res)=> {
   try {
+    console.log(req.body);
     const {username, password, access} = req.body;
+    console.log(username, password, access);
     const user = new UserModel({
       username,
       password,
@@ -27,9 +29,9 @@ router.post('/create', async (req, res)=> {
 router.post('/token', async(req, res)=> {
   const {username, password} = req.body;
   UserModel.findOne({username, password}, (error, user)=>{
-    if (error) {
-      return res.staus(400).send({'error': 'enter valid credentials'});
-    }
+    console.log(error);
+    if (error) return res.staus(400).send({error});
+    if (!Object.keys({...user}).length) return res.status(400).send({error: 'enter valid credentials'}); 
     jwt.sign({username, id: user._id, access: user.access},
            process.env.SECRET, (error, token)=> {
              if(error) {
