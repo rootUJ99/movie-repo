@@ -31,6 +31,7 @@ const Login = ({authModal, setAuthModal}) => {
       setToken(data);
       setAuthModal(false);
       console.log(data);
+      window.location.reload();
     } catch(error) {
       console.log(error)
     }
@@ -72,7 +73,7 @@ const Login = ({authModal, setAuthModal}) => {
         <Input type="password" name="password" placeholder="password" value={authForm.password} onChange={handleChange}/>
         <Button type="submit">{mode}</Button><br/>
         <div className="or-divider">--or--</div>
-        <Button onClick={()=> setMode(switchMode())}>{switchMode()}</Button>
+        <Button type="button" onClick={()=> setMode(switchMode())}>{switchMode()}</Button>
         </div>
       </form>
     </Modal>
