@@ -3,6 +3,13 @@
 
 for demo visit [**https://movie-app-repo.herokuapp.com/**](https://movie-app-repo.herokuapp.com/)
 
+Flow can only create normal user so here is the credentials for admin user
+```
+Admin user cred->
+username ->root
+password ->toor
+```
+
 to start locally 
 
 ```jsx
