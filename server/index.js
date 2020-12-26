@@ -43,6 +43,9 @@ const accessMiddleware = (req, res, next)=> {
 
 const exceptPaths = (pathArr, middleware) => {
   return (req, res, next) => {
+    if (!req.path.includes('/api')){
+      return next();
+    }
     if (pathArr.includes(req.path)) {
       return next();
     }
