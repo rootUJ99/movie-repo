@@ -30,6 +30,17 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const accessMiddleware = (req, res, next)=> {
+    console.log(res.locals.tokenData);
+    const access = res.locals.tokenData.access
+    if (access && access==='ADMIN') {
+      return next();
+    }
+    res.send({
+      error: 'admin access required'
+    });
+};
+
 const exceptPaths = (pathArr, middleware) => {
   return (req, res, next) => {
     if (pathArr.includes(req.path)) {
@@ -40,6 +51,7 @@ const exceptPaths = (pathArr, middleware) => {
 }
 const excludedArr =['/api/user/token','/api/user/create', '/api/movie/list'];
 app.use(exceptPaths(excludedArr,authMiddleware));
+app.use(exceptPaths(excludedArr,accessMiddleware));
 app.use('/api/user', authRoutes);
 app.use('/api/movie', movieRoutes);
 
