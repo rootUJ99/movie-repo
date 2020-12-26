@@ -17,6 +17,7 @@
 
 .dropdown {
   position: relative;
+  cursor: pointer;
   justify-self: center;
 }
 
