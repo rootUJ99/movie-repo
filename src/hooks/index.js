@@ -11,23 +11,3 @@ export const useLocalStorage = (key, initialValue) => {
   return [localStore, setValue];
 }
 
-
-export const useFetch = ({method ,url, body}) => {
-  const [response, setResponse] = useState({});
-  const [error, setError] = useState({});
-  useEffect(()=> {
-    (async() => {
-      try {
-        const raw = await fetch(url, {
-          method,
-          ...(body? {body: JSON.stringify(body)}: {}),
-        });
-        const data = await raw.toString();
-        setResponse(data);
-      } catch(error) {
-        setError(error)
-      }
-    })();
-  },[url, response, error]);
-  return [response, error];
-}
