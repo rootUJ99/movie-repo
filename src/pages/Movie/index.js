@@ -5,7 +5,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import './styles.css';
 
-const Movie = ({movieModal, setMovieModal, currentMovie}) => {
+const Movie = ({movieModal, setMovieModal, currentMovie, setSearchedMovie}) => {
   const mode = currentMovie ? 'EDIT' : 'ADD';
   const [userData] = useLocalStorage('token');
   const [movieForm, setMovieForm] = useState({
@@ -34,6 +34,7 @@ const Movie = ({movieModal, setMovieModal, currentMovie}) => {
       const data = await raw.json();
       setMovieModal(false);
       console.log(data);
+      setSearchedMovie(' ');
     } catch(error) {
       console.log(error)
     }
@@ -49,6 +50,7 @@ const Movie = ({movieModal, setMovieModal, currentMovie}) => {
       const data = await raw.json();
       setMovieModal(false);
       console.log(data);
+      setSearchedMovie(' ');
     } catch(error) {
       console.log(error)
     } 
@@ -63,6 +65,7 @@ const Movie = ({movieModal, setMovieModal, currentMovie}) => {
       const data = await raw.json();
       setMovieModal(false);
       console.log(data);
+      setSearchedMovie(' ');
     } catch(error) {
       console.log(error)
     }
@@ -97,7 +100,7 @@ const Movie = ({movieModal, setMovieModal, currentMovie}) => {
           <Input name="99popularity" placeholder="99popularity" value={movieForm?.['99popularity']} onChange={handleChange}/>
           <Input name="imdb_score" placeholder="imdb_score" value={movieForm?.imdb_score} onChange={handleChange}/>
           <Button type="submit">{mode}</Button>
-          {mode === 'EDIT' && <Button onClick={handleDelete}>DELETE</Button>}
+          {mode === 'EDIT' && <Button type="button" onClick={handleDelete}>DELETE</Button>}
         </div>
         </form>
     </Modal>

@@ -7,7 +7,7 @@ import Movie from '../Movie';
 import './styles.css';
 import Button from '../../components/Button';
 
-const Home = ({movieList}) => {
+const Home = ({movieList, setSearchedMovie}) => {
   const [movieModal, setMovieModal] = useState(false);
   const [userData, setUserData] = useLocalStorage('token');
   const [currentMovie, setCurrentMovie] = useState(null);
@@ -56,6 +56,7 @@ const Home = ({movieList}) => {
       }
       </div>
       {access && <Movie 
+        setSearchedMovie={setSearchedMovie}
         movieModal={movieModal} 
         setMovieModal={setMovieModal}
         currentMovie={currentMovie}  

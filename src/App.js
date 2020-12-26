@@ -27,7 +27,7 @@ function App() {
         setSearchedMovie ={(movie)=>setSearchedMovie(movie)}
         setAuthModal ={(value)=>setAuthModal(value)}
         />     
-      <Home movieList={movieList}/>
+      <Home movieList={movieList} setSearchedMovie={setSearchedMovie}/>
       <Login authModal={authModal} setAuthModal={setAuthModal}/>
     </div>
   );
