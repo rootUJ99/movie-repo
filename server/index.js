@@ -13,6 +13,7 @@ const port = process.env.PORT || 5000;
 const __dirname = new URL(import.meta.url).pathname;
 
 const dataBaseURI = process.env.DB_URI 
+console.log("databaseUril", dataBaseURI)
 mongoose.connect(dataBaseURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true

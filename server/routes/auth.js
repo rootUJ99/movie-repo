@@ -30,6 +30,7 @@ router.post('/token', async(req, res)=> {
   const {username, password} = req.body;
   UserModel.findOne({username, password}, (error, user)=>{
     console.log(error);
+    console.log("user", user)
     if (error) return res.staus(400).send({error});
     if (!Object.keys({...user}).length) return res.status(400).send({error: 'enter valid credentials'}); 
     jwt.sign({username, id: user._id, access: user.access},
