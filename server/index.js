@@ -10,6 +10,7 @@ import authRoutes from './routes/auth.js';
 dotenv.config()
 const app = express();
 const port = process.env.PORT || 5000;
+const host = "0.0.0.0"
 const __dirname = new URL(import.meta.url).pathname;
 
 const dataBaseURI = process.env.DB_URI 
@@ -19,7 +20,7 @@ mongoose.connect(dataBaseURI, {
     useUnifiedTopology: true
 }).then(()=>{
   console.log('database has been connected');
-  app.listen(port,()=>{
+  app.listen(port, host, ()=>{
     console.log('server started at '+port);
   });
 }).catch(err=> {
